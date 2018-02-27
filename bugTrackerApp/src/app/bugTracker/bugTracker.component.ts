@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Bug } from './models/Bug';
 import { BugOperationsService } from './services/bugOperations.service';
 
+
+
 @Component({
 	selector : 'app-bug-tracker',
 	templateUrl : 'bugTracker.component.html'
@@ -9,6 +11,8 @@ import { BugOperationsService } from './services/bugOperations.service';
 export class BugTrackerComponent{
 	bugs : Bug[] = [];
 
+	sortBugBy : string = 'name';
+	sortByDescending : boolean = false;
 	
 
 	constructor(private bugOperations : BugOperationsService){
