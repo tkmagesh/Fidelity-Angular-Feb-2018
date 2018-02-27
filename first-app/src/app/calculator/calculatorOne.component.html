@@ -1,3 +1,7 @@
+<style>
+	
+	
+</style>
 <h1>Calculator-1</h1>
 <hr>
 <input type="number" (change)="model.n1=$event.target.valueAsNumber">
@@ -7,4 +11,4 @@
 <input type="button" value="Subtract" (click)="model.subtract()">
 <input type="button" value="Multiply" (click)="model.multiply()">
 <input type="button" value="Divide" (click)="model.divide()">
-<div>{{model.result}}</div>
+<app-calculator-result [data]="model.result"></app-calculator-result>
