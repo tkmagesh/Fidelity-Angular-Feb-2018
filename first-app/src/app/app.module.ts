@@ -8,6 +8,7 @@ import { GreeterComponent } from './greeter/greeter.component';
 import { CalculatorOneComponent } from './calculator/calculatorOne.component';
 import { CalculatorTwoComponent } from './calculator/calculatorTwo.component';
 import { CalculatorResultComponent } from './calculator/calculatorResult.component';
+import { ProductsListComponent } from './listing/productsList.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CalculatorResultComponent } from './calculator/calculatorResult.compone
     , CalculatorOneComponent
     , CalculatorTwoComponent
     , CalculatorResultComponent
+    , ProductsListComponent
   ],
   imports: [
     BrowserModule

@@ -1,0 +1,9 @@
+<h1>Products</h1>
+<hr>
+<h3>{{products.length}}</h3>
+<label for="">Product Name :</label>
+<input type="text" #txtProductName>
+<input type="button" value="Add New" (click)="products.push(txtProductName.value)">
+<ol>
+	<li *ngFor="let product of products">{{product}}</li>
+</ol>
