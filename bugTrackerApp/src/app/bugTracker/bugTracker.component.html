@@ -10,7 +10,7 @@
 		<option value="isClosed">Status</option>
 	</select>
 	<label for="">Descending ? </label>
-	<input type="checkbox" (click)="sortByDescending = $event.target.checked">
+	<input type="checkbox" (change)="sortByDescending = $event.target.checked">
 </section>
 <section class="edit">
 	<label for="">Bug Name :</label>
