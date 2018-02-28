@@ -16,11 +16,11 @@ export class BugTrackerComponent implements OnInit{
 	
 
 	ngOnInit(){
-		this.bugs = this.bugStorage.getAll();
+		
 	}
 
 	constructor(private bugStorage : BugStorageService){
-		
+		this.bugs = this.bugStorage.getAll();
 	}
 
 	onBugCreated(newBug : Bug){

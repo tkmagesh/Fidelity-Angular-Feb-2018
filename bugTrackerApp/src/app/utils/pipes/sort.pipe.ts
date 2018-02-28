@@ -22,10 +22,10 @@ export class SortPipe implements PipeTransform {
 		}
 	}
 	transform(value: any[], attrName: string, descending : boolean = false): any[] {
-		console.log('sort.transform triggered');
 		let comparer = this.getComparer(attrName);
 		if (descending)
 			comparer = this.getDescending(comparer);
-		return value.sort(comparer);
+		value.sort(comparer);
+		return [...value];
 	}
 }
