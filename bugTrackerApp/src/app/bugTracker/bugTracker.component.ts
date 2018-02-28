@@ -13,6 +13,8 @@ export class BugTrackerComponent implements OnInit{
 	sortBugBy : string = 'name';
 	sortByDescending : boolean = false;
 	
+	newBugName : string = '';
+
 	ngOnInit(){
 		this.bugs = this.bugStorage.getAll();
 	}
@@ -21,12 +23,15 @@ export class BugTrackerComponent implements OnInit{
 		
 	}
 
-	onCreateNewClick(bugName : string){
-		let newBug : Bug = this.bugStorage.addNew(bugName);
-		this.bugs.push(newBug);
+	onCreateNewClick(){
+		let newBug : Bug = this.bugStorage.addNew(this.newBugName);
+		//this.bugs.push(newBug);
+		this.bugs = [...this.bugs, newBug];
+		this.newBugName = '';
 	}
-	onBugNameClick(bug:Bug){
-		this.bugStorage.toggle(bug);
+	onBugNameClick(bugToToggle : Bug){
+		let toggledBug : Bug = this.bugStorage.toggle(bugToToggle);
+		this.bugs = this.bugs.map(bug => bug.id === bugToToggle.id ? toggledBug : bug);
 	}
 
 	onRemoveClosedClick(){
@@ -37,9 +42,5 @@ export class BugTrackerComponent implements OnInit{
 				this.bugs.splice(index, 1);
 			}
 		}
-	}
-
-	getClosedCount(){
-		return this.bugs.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
 	}
 }

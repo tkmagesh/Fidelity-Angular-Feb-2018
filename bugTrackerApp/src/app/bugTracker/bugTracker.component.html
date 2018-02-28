@@ -1,8 +1,4 @@
-<section class="stats">
-	<span class="closed">{{getClosedCount()}}</span>
-	<span> / </span>
-	<span>{{bugs.length}}</span>
-</section>
+<app-bug-tracker-stats [data]="bugs"></app-bug-tracker-stats>
 <section class="sort">
 	<label for="">Order By :</label>
 	<select (change)="sortBugBy = $event.target.value" >
@@ -14,8 +10,8 @@
 </section>
 <section class="edit">
 	<label for="">Bug Name :</label>
-	<input type="text" #txtBugName>
-	<input type="button" value="Create New" (click)="onCreateNewClick(txtBugName.value)">
+	<input type="text" [(ngModel)]="newBugName">
+	<input type="button" value="Create New" (click)="onCreateNewClick()">
 </section>
 <section class="list">
 	<ol>
