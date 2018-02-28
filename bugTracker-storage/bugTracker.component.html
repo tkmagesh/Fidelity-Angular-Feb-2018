@@ -1,0 +1,21 @@
+<app-bug-tracker-stats [data]="bugs"></app-bug-tracker-stats>
+<section class="sort">
+	<label for="">Order By :</label>
+	<select (change)="sortBugBy = $event.target.value" >
+		<option selected value="name">Name</option>
+		<option value="isClosed">Status</option>
+	</select>
+	<label for="">Descending ? </label>
+	<input type="checkbox" (change)="sortByDescending = $event.target.checked">
+</section>
+<app-bug-tracker-edit (onNewBug)="onBugCreated($event)"></app-bug-tracker-edit>
+<section class="list">
+	<ol>
+		<li *ngFor="let bug of ( bugs | sort:sortBugBy:sortByDescending ) ">
+			<span class="bugname" (click)="onBugNameClick(bug)" [ngClass]="{closed : bug.isClosed}">{{bug.name | trimText:40}}</span>
+			<div class="datetime">{{bug.createdAt | elapsed }}</div>
+		</li>
+		
+	</ol>
+	<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">
+</section>

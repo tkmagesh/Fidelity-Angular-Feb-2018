@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BugStorageService } from '../services/bugStorage.service';
 import { Bug } from '../models/Bug';
-import { BugServerService } from '../services/bugServer.service';
 
 @Component({
 	selector: 'app-bug-tracker-edit',
@@ -19,19 +18,15 @@ export class BugEditComponent implements OnInit {
 	@Output()
 	onNewBug : EventEmitter<Bug> = new EventEmitter<Bug>();
 
-	constructor(private bugServer : BugServerService) {}
+	constructor(private bugStorage : BugStorageService) {}
 
 	ngOnInit() {
 		
 	}
 
 	onCreateNewClick(){
-		this.bugServer
-			.addNew(this.newBugName)
-			.subscribe(bug => {
-				this.newBugName = '';
-				this.onNewBug.emit(bug);		
-			})
-		
+		let bug : Bug = this.bugStorage.addNew(this.newBugName);
+		this.newBugName = '';
+		this.onNewBug.emit(bug);
 	}
 }
