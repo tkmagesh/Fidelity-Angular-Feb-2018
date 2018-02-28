@@ -13,7 +13,7 @@ export class BugTrackerComponent implements OnInit{
 	sortBugBy : string = 'name';
 	sortByDescending : boolean = false;
 	
-	newBugName : string = '';
+	
 
 	ngOnInit(){
 		this.bugs = this.bugStorage.getAll();
@@ -23,11 +23,9 @@ export class BugTrackerComponent implements OnInit{
 		
 	}
 
-	onCreateNewClick(){
-		let newBug : Bug = this.bugStorage.addNew(this.newBugName);
+	onBugCreated(newBug : Bug){
 		//this.bugs.push(newBug);
 		this.bugs = [...this.bugs, newBug];
-		this.newBugName = '';
 	}
 	onBugNameClick(bugToToggle : Bug){
 		let toggledBug : Bug = this.bugStorage.toggle(bugToToggle);
